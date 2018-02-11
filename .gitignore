@@ -1,0 +1,9 @@
+/node_modules
+/logs
+inventory/node_modules
+inventory/logs
+order/node_modules
+order/logs
+docker-compose.yml
+.eslintrc.json
+npm-debug.log
