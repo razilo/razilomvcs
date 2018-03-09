@@ -1,4 +1,5 @@
 import Path from 'path';
+import OrderModel from '../Models/Order.mjs';
 
 /**
  * raziloMVCS Controller
@@ -13,13 +14,19 @@ export default class Birds
 	index(req, res, next) {
 		res.send('Birds home page')
 		console.log('Birds home page');
+
 		next();
 	}
 
 	about(req, res, next) {
-		res.send('About birds')
-		console.log('About birds');
-		next();
+		var order = new OrderModel();
+
+		order.table.select('*').limit('1').then((rows) => {
+			res.send('About birds: ' + rows[0].created);
+			console.log(rows);
+
+			next();
+		});
 	}
 
 	boom(req, res, next) {

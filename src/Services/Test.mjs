@@ -7,6 +7,6 @@ import Service from '../Library/Service.mjs';
 export default class Test extends Service
 {
 	constructor() {
-
+		super();
 	}
 }

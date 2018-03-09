@@ -6,6 +6,10 @@ import Middleware from '../Library/Middleware.mjs'
  */
 export default class CarsMiddleware extends Middleware
 {
+	constructor() {
+		super();
+	}
+	
 	/**
 	 * invoke()
 	 * the middleware method, perofrm something awesome
