@@ -1,14 +1,16 @@
 {
   "name": "razilomvcs",
-  "description": "MVCS structured stack using express, log4js, knex/mysql and an MVC structure to give an alternative to PHP backend stack",
+  "description": "An MVCS stuctured web application framework for nodeJS",
   "version": "1.0.0",
   "main": "index.mjs",
-  "licence": "MIT",
+  "licence": "copyright",
+  "private": true,
   "author": {
     "name": "Paul Smith",
     "email": "p@ulsmith.net"
   },
   "dependencies": {
+    "cluster": "^0.7.7",
     "express": "4.16.2",
     "knex": "0.14.3",
     "log4js": "2.5.2",

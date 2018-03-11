@@ -58,12 +58,12 @@ I would use a load balancer, traefik is a good one, fire it up, add the lables t
 
 ## Endpoints
 
-We have put some sample files in there for you with routs, views and controllers..... try This
+1) <http://razilomvcs.docker.localhost>
 
-`http://razilomvcs.docker.localhost/birds`
+2) <http://razilomvcs.docker.localhost/inventory>
 
-to access the index page of the group 'birds', or...
+3) <http://razilomvcs.docker.localhost/notification>
 
-`http://razilomvcs.docker.localhost/birds/about`
+4) <http://razilomvcs.docker.localhost/order>
 
-to access the about endpoint in the birds group (resolved to a controller)
+App middleware will be present on all urls and route middleware will be for specific route groups 

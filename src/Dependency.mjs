@@ -1,8 +1,17 @@
-import BirdsBeforeMiddleware from './Middleware/BirdsBefore.mjs';
-import BirdsAfterMiddleware from './Middleware/BirdsAfter.mjs';
-import BirdsRoutes from './Routes/Birds.mjs';
-import CarsMiddleware from './Middleware/Cars.mjs';
-import CarsRoutes from './Routes/Cars.mjs';
+import AppHeaderMiddleware from './Middleware/AppHeader.mjs';
+import AppAuthorisationMiddleware from './Middleware/AppAuthorisation.mjs';
+import AppFloodMiddleware from './Middleware/AppFlood.mjs';
+
+import RouteDataInventoryMiddleware from './Middleware/RouteDataInventory.mjs';
+import RouteDataNotificationMiddleware from './Middleware/RouteDataNotification.mjs';
+import RouteDataOrderMiddleware from './Middleware/RouteDataOrder.mjs';
+
+import RootRoutes from './Routes/Root.mjs';
+import InventoryRoutes from './Routes/Inventory.mjs';
+import NotificationRoutes from './Routes/Notification.mjs';
+import OrderRoutes from './Routes/Order.mjs';
+
+import TestService from './Services/Test.mjs';
 
 /**
  * raziloMVCS Dependency
@@ -13,10 +22,35 @@ export default class Dependency
 	constructor(app) {
 		this.app = app;
 		this.app.middleware = {};
+		this.app.routes = {};
+		this.app.services = {};
 
-		// middlewear
-		this.app.middleware.birdsBefore = new BirdsBeforeMiddleware();
-		this.app.middleware.birdsAfter = new BirdsAfterMiddleware();
-		this.app.middleware.carsMiddleware = new CarsMiddleware();
+		this.loadAppMiddleware();
+		this.loadRouteMiddleware();
+		this.loadRoutes();
+		this.loadServices();
+	}
+
+	loadAppMiddleware() {
+		this.app.middleware.appHeader = new AppHeaderMiddleware();
+		this.app.middleware.appAuthorisation = new AppAuthorisationMiddleware();
+		this.app.middleware.appFlood = new AppFloodMiddleware();
+	}
+
+	loadRouteMiddleware() {
+		this.app.middleware.routeDataInventory = new RouteDataInventoryMiddleware();
+		this.app.middleware.routeDataNotification = new RouteDataNotificationMiddleware();
+		this.app.middleware.routeDataOrder = new RouteDataOrderMiddleware();
+	}
+
+	loadRoutes() {
+		this.app.routes.root = new RootRoutes();
+		this.app.routes.inventory = new InventoryRoutes(this.app);
+		this.app.routes.notification = new NotificationRoutes();
+		this.app.routes.order = new OrderRoutes();
+	}
+
+	loadServices() {
+		this.app.services.test = new TestService();
 	}
 }

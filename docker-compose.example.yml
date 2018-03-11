@@ -20,8 +20,8 @@ services:
       - MYSQL_HOST=mysql
       - MYSQL_SCHEMA=nucleus
       - MYSQL_USER=nucleus
-      - MYSQL_PASSWORD=???????
-      - MYSQL_TIMEOUT=72000
+      - MYSQL_PASSWORD=????????
+      - MYSQL_TIMEOUT=7200000
       - MYSQL_POOL_MIN=1
       - MYSQL_POOL_MAX=5
 networks:
